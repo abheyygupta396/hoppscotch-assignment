@@ -1,17 +1,18 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: path.join(__dirname, "src", "index.tsx"),
   mode: process.env.NODE_ENV || "development",
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
-    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })],
   },
   output: {
-    path: path.join(__dirname, '/build'),
-    publicPath: '/',
+    path: path.join(__dirname, "/build"),
+    publicPath: "/",
     filename: `[name].[contenthash]-${Date.now()}.js`,
   },
   module: {
@@ -35,10 +36,6 @@ module.exports = {
         },
       },
       {
-        test: /\.(scss|sass|css)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
-      },
-      {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
         use: {
           loader: "file-loader",
@@ -46,6 +43,10 @@ module.exports = {
             name: "[path][name].[ext]",
           },
         },
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
@@ -57,9 +58,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       // HtmlWebpackPlugin simplifies creation of HTML files to serve your webpack bundles
-      template: './public/index.html',
+      template: "./public/index.html",
       minify: true,
-      filename: (entryName) => 'index.html',
+      filename: (entryName) => "index.html",
     }),
   ],
 };
