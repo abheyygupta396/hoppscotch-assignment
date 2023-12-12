@@ -22,4 +22,4 @@ Branch: test-branch
 
 ## Application deployed on surge.sh
 
-See demo on: https://assignment-hoppscotch-app.surge.sh/
+See demo on: https://assignment-app.surge.sh/
