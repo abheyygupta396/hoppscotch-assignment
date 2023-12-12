@@ -12,7 +12,14 @@ To start the project, use the following command:
 
 yarn start
 
-
 ## This repo contains assigment based task.
 
 Repo Link: https://github.com/abheyygupta396/hoppscotch-assignment.git
+
+## Check whole code on Branch
+
+Branch: test-branch
+
+## Application deployed on surge.sh
+
+See demo on: https://assignment-hoppscotch-app.surge.sh/
